@@ -240,6 +240,26 @@ export default {
       },
       /* wwEditor:end */
     },
+    countrySelectorWidth: {
+      label: {
+        en: 'Country code width',
+        fr: 'Largeur du code pays'
+      },
+      type: 'Text',
+      bindable: true,
+      responsive: true,
+      states: true,
+      defaultValue: '6.5rem',
+      section: 'styling',
+      /* wwEditor:start */
+      bindingValidation: {
+        cssSupports: 'width',
+        type: 'string',
+        tooltip: 'Width of the country code selector (e.g., "6.5rem", "90px"). Keep it small so the phone number field gets more space.'
+      },
+      propertyHelp: 'Controls how wide the country code selector is. A smaller value leaves more room for the phone number input.'
+      /* wwEditor:end */
+    },
     readOnly: {
       label: {
         en: "Read Only",

@@ -21,6 +21,7 @@
       block
       :size="currentSize"
       :orientation="content?.orientation ?? 'responsive'"
+      :country-selector-width="countrySelectorWidth"
       :show-code-on-list="content?.showCodeOnList ?? true"
       :preferred-countries="preferredCountriesArray"
       :country-locale="countryLocale"
@@ -378,6 +379,12 @@ Object containing phone input data:
       const size = this.content?.size || 'sm'
       console.log('Phone input size:', size)
       return size
+    },
+
+    // Width of the country-code selector. Kept compact so the phone number
+    // field gets the remaining space instead of the library's 9rem default.
+    countrySelectorWidth() {
+      return this.content?.countrySelectorWidth || '6.5rem'
     }
   },
 
@@ -661,6 +668,14 @@ Object containing phone input data:
 /* ensure the actual <input> fills the line */
 .phone-input-container :deep(input.m-input-input) {
   width: 100% !important;
+}
+
+/* Keep the country-code selector compact (its width comes from the
+   country-selector-width prop) and stop it from shrinking, so the phone
+   number field absorbs all the remaining horizontal space instead of the
+   two ending up ~50/50. */
+.phone-input-container :deep(.m-country-selector) {
+  flex: 0 0 auto !important;
 }
 
 /* Fix row orientation layout */
